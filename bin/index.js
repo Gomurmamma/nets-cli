@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-console.log("Hello world!");
 
 const { program } = require("commander");
 const gameToday = require("../commands/gameToday");

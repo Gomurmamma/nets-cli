@@ -1,4 +1,5 @@
 const axios = require("axios");
+const chalk = require("chalk");
 
 const gameToday = async () => {
   const timestamp = Date.now();
@@ -17,23 +18,31 @@ const gameToday = async () => {
     const nextGameDate = new Date(upcomingGames[0].date);
     const nextGameDateString = nextGameDate.toISOString().substring(0, 10);
     if (todayDateString === nextGameDateString) {
-      console.log("There is a game later today!");
+      console.log(chalk.bgGreen.bold("There is a game today!"));
     } else if (todayDateString !== nextGameDateString) {
-      console.log("No game today!");
+      console.log(chalk.yellowBright.bold("No game today!"));
       const nextGameDatePrint = nextGameDate.toLocaleDateString("en-us", {
         weekday: "long",
         month: "long",
         day: "numeric",
       });
-      console.log(`Next game is ${nextGameDatePrint}.`);
+      console.log(
+        chalk.yellowBright.bold.underline(`Next game is: ${nextGameDatePrint}.`)
+      );
     }
 
     nextGame.home_team.id === 3
-      ? console.log("Nets are home.")
-      : console.log(`Nets are away at ${nextGame.home_team.city}`);
+      ? console.log(chalk.whiteBright.bold("Nets are home."))
+      : console.log(
+          chalk.whiteBright.bold(`Nets are away at ${nextGame.home_team.city}`)
+        );
 
-    console.log(`Game starts at ${nextGame.status}`);
-    console.log("Go Nets!");
+    console.log(chalk.whiteBright(`Game starts at ${nextGame.status}`));
+    console.log(
+      chalk.redBright.bold("GO NETS!"),
+      chalk.whiteBright.bold("GO NETS!"),
+      chalk.blueBright.bold("GO NETS!")
+    );
   } catch (error) {
     console.log(error);
   }

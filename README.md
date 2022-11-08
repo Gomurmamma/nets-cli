@@ -1,2 +1,2 @@
 # nets-cli
-A tool for seeing if the Brooklyn Nets have an NBA game today
+A tool for information on Brooklyn Nets NBA games today

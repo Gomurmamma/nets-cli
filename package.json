@@ -1,0 +1,24 @@
+{
+  "name": "nets-cli",
+  "version": "1.0.0",
+  "description": "Tool for information on Brooklyn Nets NBA games today",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gomurmamma/nets-cli.git"
+  },
+  "author": "Donald Antonio Young",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gomurmamma/nets-cli/issues"
+  },
+  "homepage": "https://github.com/Gomurmamma/nets-cli#readme",
+  "dependencies": {
+    "chalk": "^5.1.2",
+    "commander": "^9.4.1",
+    "inquirer": "^9.1.4"
+  }
+}

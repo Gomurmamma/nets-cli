@@ -5,7 +5,7 @@ const gameToday = require("../commands/gameToday");
 
 program
   .command("game-today")
-  .description("Lists all Brooklyn Nets NBA games for today")
+  .description("Information on Brooklyn Nets NBA games for today")
   .action(gameToday);
 
 program.parse();

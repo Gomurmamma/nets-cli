@@ -11,7 +11,7 @@
     "url": "git+https://github.com/Gomurmamma/nets-cli.git"
   },
   "bin": {
-    "net-cli": "./bin/index.js"
+    "nets-cli": "./bin/index.js"
   },
   "author": "Donald Antonio Young",
   "license": "MIT",

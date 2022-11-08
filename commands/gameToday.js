@@ -13,15 +13,27 @@ const gameToday = async () => {
     const gamesArray = response.data.data;
     const upcomingGames = gamesArray.filter((game) => game.time !== "Final");
 
-    console.log(upcomingGames[0].date);
-    const nextGame = new Date(upcomingGames[0].date);
-    const nextGameDateString = nextGame.toISOString().substring(0, 10);
+    const nextGame = upcomingGames[0];
+    const nextGameDate = new Date(upcomingGames[0].date);
+    const nextGameDateString = nextGameDate.toISOString().substring(0, 10);
     if (todayDateString === nextGameDateString) {
       console.log("There is a game later today!");
     } else if (todayDateString !== nextGameDateString) {
       console.log("No game today!");
-      console.log(`Next game is ${nextGameDateString}`);
+      const nextGameDatePrint = nextGameDate.toLocaleDateString("en-us", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+      });
+      console.log(`Next game is ${nextGameDatePrint}.`);
     }
+
+    nextGame.home_team.id === 3
+      ? console.log("Nets are home.")
+      : console.log(`Nets are away at ${nextGame.home_team.city}`);
+
+    console.log(`Game starts at ${nextGame.status}`);
+    console.log("Go Nets!");
   } catch (error) {
     console.log(error);
   }

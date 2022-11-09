@@ -12,11 +12,22 @@ const gameToday = async () => {
       `https://balldontlie.io/api/v1/games?team_ids[]=3&seasons[]=${season}`
     );
     const gamesArray = response.data.data;
-    const upcomingGames = gamesArray.filter((game) => game.time !== "Final");
 
+    //filter game schedule into upcomingGames
+    let upcomingGames = gamesArray.filter((game) => game.time !== "Final");
+
+    //Sort by ascending id since id's are in chronological order
+    upcomingGames = upcomingGames.sort((a, b) => {
+      return a.id - b.id;
+    });
+
+    //Net's nextGame will be first in upcomingGames[]
     const nextGame = upcomingGames[0];
+
     const nextGameDate = new Date(upcomingGames[0].date);
     const nextGameDateString = nextGameDate.toISOString().substring(0, 10);
+
+    //Compare date strings
     if (todayDateString === nextGameDateString) {
       console.log(chalk.bgGreen.bold("There is a game today!"));
     } else if (todayDateString !== nextGameDateString) {
@@ -32,7 +43,10 @@ const gameToday = async () => {
     }
 
     nextGame.home_team.id === 3
-      ? console.log(chalk.whiteBright.bold("Nets are home."))
+      ? console.log(
+          chalk.whiteBright.bold("Nets are home against the ") +
+            chalk.yellowBright.bold(`${nextGame.visitor_team.full_name}`)
+        )
       : console.log(
           chalk.whiteBright.bold(`Nets are away at ${nextGame.home_team.city}`)
         );
